@@ -86,7 +86,8 @@ _assetAmountOut = redeemedAmount - feeAmountScaled;
 
 Note: the mitigation assumes no tokens with higher than 18 decimals.
 
-**Submission details**: https://cantina.xyz/code/f57ffb47-0ded-4f04-bcec-ecd7d47fad58/findings/502
+### Submission details
+[#502](https://cantina.xyz/code/f57ffb47-0ded-4f04-bcec-ecd7d47fad58/findings/502)
 
 ## H-02: **Oracle price check is inverted**
 
@@ -167,7 +168,8 @@ This issue can be fixed by inverting the ratio computed on tBTCChainlinkAdapter.
 (btcUsdPrice * TBTC_USD_PRECISION);
 ```
 
-**Submission details**: https://cantina.xyz/code/f57ffb47-0ded-4f04-bcec-ecd7d47fad58/findings/456
+### Submission details
+[#456](https://cantina.xyz/code/f57ffb47-0ded-4f04-bcec-ecd7d47fad58/findings/456)
 
 # ⚠️ Medium Severity Findings
 
@@ -253,4 +255,5 @@ The `sellAsset` function does not revert even though there is a significant diff
 ### Recommendation
 It is difficult to mitigate the issue completely as fundamentally the updates to the two feeds will naturally occur at different frequencies due to the different deviation thresholds and heartbeats. One option would be to consider using WBTC instead of tBTC as its chainlink feed has a lower deviation threshold, and so should be updated more often. In addition to this, another check within the code could be added to compare the updatedAt times of two feeds and ensure they are not too far apart. The threshold for this would need to be carefully tuned to avoid DoS.
 
-**Submission details**: https://cantina.xyz/code/f57ffb47-0ded-4f04-bcec-ecd7d47fad58/findings/466
+### Submission details
+[#466](https://cantina.xyz/code/f57ffb47-0ded-4f04-bcec-ecd7d47fad58/findings/466)
