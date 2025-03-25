@@ -8,11 +8,11 @@
 
 ---
 
-## 🛑 High Severity Findings
+# 🛑 High Severity Findings
 
-### H-01: **`EbtcBSM` contract does not handle asset tokens with decimals other than 18**
+## H-01: **`EbtcBSM` contract does not handle asset tokens with decimals other than 18**
 
-#### Description and impact
+### Description and impact
 The `EbtcBSM` contract is intended to work with a variety of BTC-pegged tokens: several of these tokens do not use 18 decimal places but the contract is unable to handle these correctly, leading to direct loss of funds for users. The following are examples which all use 8 decimal places:
 
 - cbBTC
@@ -28,7 +28,7 @@ The impact is high because:
 
 Likelihood is high because it is immediately exploitable by any user.
 
-#### Proof of Concept
+### Proof of Concept
 Add another Solidity file under the test folder and copy the following into it:
 
 ```solidity
@@ -63,7 +63,7 @@ Then run the test using:
 forge test -vvv --match-test testBadDecimalsExploit
 ```
 
-#### Recommended Mitigation Steps 
+### Recommended Mitigation Steps 
 
 On EbtcBSM.sol:181, adjust the ebtcAmountOut so it is scaled appropriately:
 
@@ -88,9 +88,9 @@ Note: the mitigation assumes no tokens with higher than 18 decimals.
 
 **Submission details**: https://cantina.xyz/code/f57ffb47-0ded-4f04-bcec-ecd7d47fad58/findings/502
 
-### H-02: **Oracle price check is inverted**
+## H-02: **Oracle price check is inverted**
 
-#### Description and impact
+### Description and impact
 The oracle price check which occurs when minting eBTC is designed to ensure that if tBTC depegs downwards from BTC too much, then eBTC should not be mintable. The `tBTCChainlinkAdapter` returns the inverse of the required price, so the logic is inverted.
 
 The ratio used to compute the price the price of tBTC relative to BTC has the numerator/denominator the wrong way around on tBTCChainlinkAdapter.sol:64.
@@ -109,7 +109,7 @@ The impact is high: the issue may cause distrust of the eBTC protocol if an eBTC
 
 The issue can only occur if tBTC depegs downwards which is not likely to happen often but is certainly possible.
 
-#### Proof of Concept
+### Proof of Concept
 Add the following imports to SellAssetTests.t.sol:
 
 ```solidity
@@ -158,7 +158,7 @@ forge test --match-test testSellAssetsDownardsDepeg -vv
 
 This results in test failure as the sellAsset function does not revert.
 
-#### Recommended Mitigation Steps
+### Recommended Mitigation Steps
 
 This issue can be fixed by inverting the ratio computed on tBTCChainlinkAdapter.sol:L64 as shown:
 
@@ -169,11 +169,11 @@ This issue can be fixed by inverting the ratio computed on tBTCChainlinkAdapter.
 
 **Submission details**: https://cantina.xyz/code/f57ffb47-0ded-4f04-bcec-ecd7d47fad58/findings/456
 
-## ⚠️ Medium Severity Findings
+# ⚠️ Medium Severity Findings
 
-### M-01: `tBTCChainlinkAdapter` does not account for one price feed lagging behind the other
+## M-01: `tBTCChainlinkAdapter` does not account for one price feed lagging behind the other
 
-#### Description and impact
+### Description and impact
 On tBTCChainlinkAdapter.sol:108, the contract assigns the `updatedAt` to be the minimum of the two price feeds but does not consider if there is a significant difference difference in these two times. A difference is likely to occur as the tBTC feed is typically updated less frequently than BTC. These are the current configurations of the chainlink feeds:
 
 tBTC trigger parameters (source: https://data.chain.link/feeds/ethereum/mainnet/tbtc-usd):
@@ -190,7 +190,7 @@ There is some mitigation for this issue already as OraclePriceConstraint:62 ensu
 
 These are some possible scenarios:
 
-##### Scenario A
+#### Scenario A
 
 Due to the long heartbeat interval of tBTC it's likely that oracleFreshnessSeconds would need to be set quite high (i.e. close to 24 hours) in order to stop DoS in low volatility conditions (when tBTC feed won't be updated regularly). Although unlikely, it is possible that:
 
@@ -198,7 +198,7 @@ Due to the long heartbeat interval of tBTC it's likely that oracleFreshnessSecon
 1. BTC price feed continues to be updated, and the price does not fluctuate significantly.
 1. While tBTCprice feed is not updated, a tBTC depeg occurs, causing the system requirement of approximate parity between tBTC and BTC to be broken.
 
-##### Scenario B
+#### Scenario B
 
 There is a rapid market movement, and tBTC price feed continually lags behind. This might lead to situations where the depeg threshold is reached simply due to stale price data of tBTC, rather than an actual depeg (leading to temporary DoS). Additionally, it may be the case that a depeg is beginning to occur but the price difference since the last chainlink update is still less than the tBTC deviation threshold of 2%. There may be temporary periods where the depeg cannot be detected the protocol.
 
