@@ -4,7 +4,7 @@
 **Contest:** [badger-ebtc-bsm](https://cantina.xyz/competitions/f57ffb47-0ded-4f04-bcec-ecd7d47fad58)  
 **Dates:** March 6, 2025 - March 13, 2025   
 **Role:** Independent Security Researcher  
-**Findings accepted:** 2 High, 1 Medium, 1 Low
+**Findings:** 2 High, 1 Medium, 1 Low
 
 ---
 

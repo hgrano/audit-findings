@@ -4,7 +4,7 @@
 **Contest:** [xxxxxxxxxxxx](xxxxxxxxxxxx)  
 **Dates:** March 6, 2025 - March 13, 2025   
 **Role:** Independent Security Researcher  
-**Findings accepted:** X High, X Medium
+**Findings:** X High, X Medium
 
 ---
 

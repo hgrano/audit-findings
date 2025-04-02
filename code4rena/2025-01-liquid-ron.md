@@ -4,7 +4,7 @@
 **Contest:** [Liquid Ron](https://code4rena.com/audits/2025-01-liquid-ron)  
 **Dates:** Jan 29, 2025 - Feb 5, 2025   
 **Role:** Independent Warden   
-**Findings accepted:** 1 Low
+**Findings:** 1 Low
 
 ---
 
