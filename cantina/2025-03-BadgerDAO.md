@@ -958,4 +958,4 @@ This costs the attacker approximately 0.015 eBTC to drain 5 tBTC from the protoc
 #### Recommendation
 Consider measuring the total amount of asset token withdrawn from the BSM over a rolling time window. If the value is too high in comparison to the current total amount of asset tokens available, then the `buyAsset` function could revert. This would require careful tuning of threshold parameters to determine at what point `buyAsset` should revert.
 
-**Submission details:** xxxxxxxxxxxx
+**Submission details:** https://cantina.xyz/code/f57ffb47-0ded-4f04-bcec-ecd7d47fad58/findings/452
