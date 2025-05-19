@@ -3,7 +3,7 @@
 **Platform:** code4rena  
 **Contest:** [Nudge.xyz](https://code4rena.com/audits/2025-03-nudgexyz)  
 **Dates:** March 18, 2025 - March 25, 2025   
-**Role:** Independent Security Researcher  
+**Role:** Independent Warden
 **Findings:** 2 Medium
 
 ---
