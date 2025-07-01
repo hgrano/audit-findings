@@ -10,4 +10,4 @@ This repository contains all my currently confirmed smart contract audit finding
 | Code4rena  | Liquid Ron           | Jan 2025    | 1 Low                | [View](./code4rena/2025-01-liquid-ron.md)      | Limited time with this audit, my single finding was deemed as low severity by the judges |
 | Code4rena  | Phi                  | August 2024 | 2 High, 2 Med        | [View](./code4rena/2024-08-phi.md)             | My first try at auditing, placed 13th out of 99 auditors |
 
-* Includes 1 Medium severity finding which was judged invalid, but respectfully, I believe it is worth raising as a Medium severity issue.
+\* Includes 1 Medium severity finding which was judged invalid, but respectfully, I believe it is worth raising as a Medium severity issue.
