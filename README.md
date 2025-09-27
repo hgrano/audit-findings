@@ -4,7 +4,8 @@ This repository contains all my currently confirmed smart contract audit finding
 
 | Platform   | Contest              | Date        | Findings             | Summary                                        | Comments                                 |
 |------------|----------------------|-------------|----------------------|------------------------------------------------|----------------------------------------- |
-| Code4rena  | Upside            | May   2025  | QA report and 1 Med*           | [View](./code4rena/2025-05-upside.md)       | Placed 3rd   |
+| Code4rena  | Alchemix V3          | May   2025  | 4 High               | [View](./cantina/2025-05-alchemix-v3.md)       | Placed 13th out of ~200 auditors. Highlight: one finding which was almost unique (only reported by one other auditor).  |
+| Code4rena  | Upside               | May   2025  | QA report and 1 Med*           | [View](./code4rena/2025-05-upside.md)       | Placed 3rd   |
 | Code4rena  | Nudge.xyz            | March 2025  | 2 Med                | [View](./code4rena/2025-03-nudgexyz.md)        | Placed 3rd out of 58 auditors            |
 | Cantina    | BadgerDAO            | March 2025  | 2 High, 1 Med, 2 Low | [View](./cantina/2025-03-BadgerDAO.md)         | Placed 14th out of 80 auditors           |
 | Code4rena  | Liquid Ron           | Jan 2025    | 1 Low                | [View](./code4rena/2025-01-liquid-ron.md)      | Limited time with this audit, my single finding was deemed as low severity by the judges |
