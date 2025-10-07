@@ -4,7 +4,7 @@ This repository contains all my currently confirmed smart contract audit finding
 
 | Platform   | Contest                 | Date        | Findings             | Summary                                        | Comments                                 |
 |------------|-------------------------|-------------|----------------------|------------------------------------------------|----------------------------------------- |
-| Code4rena  | GTE Perps and Launchpad | Sept 2025   | Approx. 25 H/Ms awaiting confirmation | Judging not completed.        | Several currently selected as primary (best) submission, pending final judging decision. |
+| Code4rena  | GTE Perps and Launchpad | Sept 2025   | Approx. 25 H/Ms awaiting confirmation | Not available yet        | 8 submissions currently selected as primary (best) submission, pending final judging decision |
 | Sherlock   | Notional exponent       | July  2025  | 1 High, 1 Med        | [View](./sherlock/2025-05-notional-exponent.md)|                                          |
 | Sherlock   | Chainlink Rewards       | June  2025  | 1 Med                | (Private findings)                             |                                          |
 | Sherlock   | LEND                    | May   2025  | 7 High               | [View](./sherlock/2025-05-lend.md)             |                                          |
