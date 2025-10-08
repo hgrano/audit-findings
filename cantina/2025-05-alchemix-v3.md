@@ -163,7 +163,7 @@ There does not appear to be a straightforward fix for this issue. A possible sol
 
 **Submission details:** https://cantina.xyz/code/e68909e6-3491-4a94-a707-ecf0c89cf72a/findings/1214
 
-### H-01: An attacker can cause initial deposits to be permanently locked by requesting redemption of a dust amount
+### H-02: An attacker can cause initial deposits to be permanently locked by requesting redemption of a dust amount
 
 #### Description and impact
 If an attacker is able to be the first depositor and the victim makes a deposit in the next block then an attacker can cause the victim's deposit to be permanently stuck in the alchemist.
