@@ -242,6 +242,8 @@ A possible solution is to check to check that `cumulativeEarmarked` is no higher
         if (block.number > lastEarmarkBlock && totalDebt > cumulativeEarmarked) {
 ```
 
+**Submission details:** https://cantina.xyz/code/e68909e6-3491-4a94-a707-ecf0c89cf72a/findings/1086
+
 ### H-03: Calls to `_sync` / `_calculateUnrealizedDebt` after the previous redemption block may revert leading to DoS
 
 #### Description and impact
@@ -307,6 +309,8 @@ This issue should be fixable by preventing the modification of `debtToEarmark` i
 if (block.number > lastRedemptionBlock && _redemptionWeight != 0 && previousRedemption.earmarkWeight > account.lastAccruedEarmarkWeight) {
             debtToEarmark = PositionDecay.ScaleByWeightDelta(account.debt - account.earmarked, previousRedemption.earmarkWeight - account.lastAccruedEarmarkWeight);
 ```
+
+**Submission details:** https://cantina.xyz/code/e68909e6-3491-4a94-a707-ecf0c89cf72a/findings/847
 
 ### H-04: AlchemistV3's `totalDebt` may be less than `cumulativeEarmarked` causing funds to be permanently locked
 
@@ -381,3 +385,5 @@ You may want to consider reducing `cumulativeEarmarked` during the repay functio
 ```solidity
 cumulativeEarmarked -= earmarkToRemove
 ```
+
+**Submission details:** https://cantina.xyz/code/e68909e6-3491-4a94-a707-ecf0c89cf72a/findings/839
