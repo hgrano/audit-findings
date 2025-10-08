@@ -2,13 +2,19 @@
 
 This repository contains all my currently confirmed smart contract audit findings.
 
+Highlights:
+- Two 3rd place finishes on Code4Rena.
+- 22 confirmed high findings (plus 9 awaiting judging).
+- 11 confirmed medium findings (plus 6 awaiting judging).
+- Most unique/interesting finding: [Alchemix V3: H-01](./cantina/2025-05-alchemix-v3.md#h-01-an-initial-dust-deposit-can-be-used-to-decrease-debt-on-other-accounts-leading-to-loss-of-funds) (only reported by two other auditors out of ~200 competitors).
+
 | Platform   | Contest                 | Date        | Findings             | Summary                                        | Comments                                 |
 |------------|-------------------------|-------------|----------------------|------------------------------------------------|----------------------------------------- |
 | Code4rena  | GTE Perps and Launchpad | Sept 2025   | High: 6 confirmed, 9 awaiting judging. Med: 4 confirmed, 6 awaiting judging. | Not available yet        | 8 submissions currently selected as primary (best) submission, pending final judging decision |
 | Sherlock   | Notional exponent       | July  2025  | 1 High, 1 Med        | [View](./sherlock/2025-05-notional-exponent.md)|                                          |
 | Sherlock   | Chainlink Rewards       | June  2025  | 1 Med                | (Private findings)                             |                                          |
 | Sherlock   | LEND                    | May   2025  | 7 High               | [View](./sherlock/2025-05-lend.md)             |                                          |
-| Cantina    | Alchemix V3             | May   2025  | 4 High               | [View](./cantina/2025-05-alchemix-v3.md)       | Placed 13th out of ~200 auditors. Highlight: one finding which was almost unique (only reported by one other auditor).  |
+| Cantina    | Alchemix V3             | May   2025  | 4 High               | [View](./cantina/2025-05-alchemix-v3.md)       | Placed 13th out of ~200 auditors. Highlight: one finding which was almost unique (only reported by two other auditors out of ~200 competitors)  |
 | Code4rena  | Upside                  | May   2025  | QA report and 1 Med* | [View](./code4rena/2025-05-upside.md)          | Placed 3rd                               |
 | Code4rena  | Nudge.xyz               | March 2025  | 2 Med                | [View](./code4rena/2025-03-nudgexyz.md)        | Placed 3rd out of 58 auditors            |
 | Cantina    | BadgerDAO               | March 2025  | 2 High, 1 Med, 2 Low | [View](./cantina/2025-03-BadgerDAO.md)         | Placed 14th out of 80 auditors           |
