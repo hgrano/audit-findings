@@ -4,12 +4,15 @@ This repository contains all my currently confirmed smart contract audit finding
 
 Highlights:
 - Two 3rd place finishes on Code4Rena.
-- 22 confirmed high findings.
+- 23 confirmed high findings.
 - 11 confirmed medium findings.
-- Most unique/interesting finding: [Alchemix V3: H-01](./cantina/2025-05-alchemix-v3.md#h-01-an-initial-dust-deposit-can-be-used-to-decrease-debt-on-other-accounts-leading-to-loss-of-funds) (only reported by two other auditors out of ~200 competitors).
+- Most unique/interesting findings:
+  - Sequence (solo high awaiting report publication by Code4rena)
+  - [Alchemix V3: H-01](./cantina/2025-05-alchemix-v3.md#h-01-an-initial-dust-deposit-can-be-used-to-decrease-debt-on-other-accounts-leading-to-loss-of-funds) (only reported by two other auditors out of ~200 competitors).
 
 | Platform   | Contest                 | Date        | Findings             | Summary                                        | Comments                                 |
 |------------|-------------------------|-------------|----------------------|------------------------------------------------|----------------------------------------- |
+| Code4rena  | Sequence                | Oct 2025    | 1 Solo High          | (Awaiting report publication)                  | Placed 2nd                               |
 | Code4rena  | GTE Perps and Launchpad | Sept 2025   | High: 6 confirmed, 9 awaiting judging. Med: 4 confirmed, 6 awaiting judging. | Not available yet        | Several submissions currently selected as primary (best) submission, pending final judging decision |
 | Sherlock   | Notional exponent       | July  2025  | 1 High, 1 Med        | [View](./sherlock/2025-05-notional-exponent.md)|                                          |
 | Sherlock   | Chainlink Rewards       | June  2025  | 1 Med                | (Private findings)                             |                                          |
