@@ -3,7 +3,7 @@
 This repository contains all my currently confirmed smart contract audit findings.
 
 Highlights:
-- Two 3rd place finishes on Code4Rena.
+- One 2nd place and two 3rd place finishes on Code4Rena.
 - 23 confirmed high findings.
 - 11 confirmed medium findings.
 - Most unique/interesting findings:
