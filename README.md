@@ -4,8 +4,8 @@ This repository contains all my currently confirmed smart contract audit finding
 
 Highlights:
 - One 2nd place and two 3rd place finishes on Code4Rena.
-- 23 confirmed high findings.
-- 11 confirmed medium findings.
+- 24 confirmed high findings.
+- 13 confirmed medium findings.
 - Most unique/interesting findings:
   - Sequence (solo high awaiting report publication by Code4rena)
   - [Alchemix V3: H-01](./cantina/2025-05-alchemix-v3.md#h-01-an-initial-dust-deposit-can-be-used-to-decrease-debt-on-other-accounts-leading-to-loss-of-funds) (only reported by two other auditors out of ~200 competitors).
