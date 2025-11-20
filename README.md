@@ -13,7 +13,7 @@ Highlights:
 | Platform   | Contest                 | Date        | Findings             | Summary                                        | Comments                                 |
 |------------|-------------------------|-------------|----------------------|------------------------------------------------|----------------------------------------- |
 | Code4rena  | Sequence                | Oct 2025    | 1 Solo High          | (Awaiting report publication)                  | Placed 2nd                               |
-| Code4rena  | GTE Perps and Launchpad | Sept 2025   | High: 6 confirmed, 9 awaiting judging. Med: 4 confirmed, 6 awaiting judging. | Not available yet        | Several submissions currently selected as primary (best) submission, pending final judging decision |
+| Code4rena  | GTE Perps and Launchpad | Sept 2025   | High: 7 confirmed. Med: 6 confirmed. Several more awaiting escalation. | Not available yet        | Several submissions currently selected as primary (best) submission, pending final judging decision |
 | Sherlock   | Notional exponent       | July  2025  | 1 High, 1 Med        | [View](./sherlock/2025-05-notional-exponent.md)|                                          |
 | Sherlock   | Chainlink Rewards       | June  2025  | 1 Med                | (Private findings)                             |                                          |
 | Sherlock   | LEND                    | May   2025  | 7 High               | [View](./sherlock/2025-05-lend.md)             |                                          |
