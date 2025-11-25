@@ -7,7 +7,7 @@ Highlights:
 - 24 confirmed high findings.
 - 13 confirmed medium findings.
 - Most unique/interesting findings:
-  - [Sequence]()
+  - [Sequence H-01](./code4rena/2025-10-sequence.md#h-01-chained-signature-with-checkpoint-usage-disabled-can-bypass-all-checkpointer-validation) (Solo high)
   - [Alchemix V3: H-01](./cantina/2025-05-alchemix-v3.md#h-01-an-initial-dust-deposit-can-be-used-to-decrease-debt-on-other-accounts-leading-to-loss-of-funds) (only reported by two other auditors out of ~200 competitors).
 
 | Platform   | Contest                 | Date        | Findings             | Summary                                        | Comments                                 |
