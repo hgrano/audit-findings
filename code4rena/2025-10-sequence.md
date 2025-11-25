@@ -12,7 +12,7 @@
 ### H-01: Chained signature with checkpoint usage disabled can bypass all checkpointer validation
 
 #### Finding description and impact
-Consider a scenario where (1) the wallet is behind the checkpointer and (2) a chained signature is used however bit 6 (0x40 - the checkpointer usage flag) is zero. As a result when BaseSig.recover is called the below if-block on BaseSig.sol:88-106 will be skipped:
+Consider a scenario where (1) the wallet is behind the checkpointer and (2) a chained signature is used however bit 6 (0x40 - the checkpointer usage flag) is zero. As a result when `BaseSig.recover` is called the below if-block on BaseSig.sol:88-106 will be skipped:
 
 ```solidity
     if (signatureFlag & 0x40 == 0x40 && _checkpointer == address(0)) {
@@ -136,7 +136,6 @@ After all this the signature recovery doesn't revert and returns an image hash w
 
 #### Recommended mitigation steps
 Do not permit the checkpointer to be disabled in the signature (bit 6 left unset) if a chained signature is used. The signature recovery should revert in this case. For example, create a new custom error for this and add it here:
-
 
 ```diff
 --- a/src/modules/auth/BaseSig.sol
