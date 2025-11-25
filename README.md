@@ -7,12 +7,12 @@ Highlights:
 - 24 confirmed high findings.
 - 13 confirmed medium findings.
 - Most unique/interesting findings:
-  - Sequence (solo high awaiting report publication by Code4rena)
+  - [Sequence]()
   - [Alchemix V3: H-01](./cantina/2025-05-alchemix-v3.md#h-01-an-initial-dust-deposit-can-be-used-to-decrease-debt-on-other-accounts-leading-to-loss-of-funds) (only reported by two other auditors out of ~200 competitors).
 
 | Platform   | Contest                 | Date        | Findings             | Summary                                        | Comments                                 |
 |------------|-------------------------|-------------|----------------------|------------------------------------------------|----------------------------------------- |
-| Code4rena  | Sequence                | Oct 2025    | 1 Solo High          | (Awaiting report publication)                  | Placed 2nd                               |
+| Code4rena  | Sequence                | Oct 2025    | 1 Solo High          | [View](./code4rena/2025-10-sequence.md)                  | Placed 2nd                               |
 | Code4rena  | GTE Perps and Launchpad | Sept 2025   | High: 7 confirmed. Med: 6 confirmed. Several more awaiting escalation. | Not available yet        | 8 submissions currently selected as primary (best) submission, pending final judging decision |
 | Sherlock   | Notional exponent       | July  2025  | 1 High, 1 Med        | [View](./sherlock/2025-05-notional-exponent.md)|                                          |
 | Sherlock   | Chainlink Rewards       | June  2025  | 1 Med                | (Private findings)                             |                                          |
