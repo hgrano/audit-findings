@@ -445,9 +445,9 @@ The test logs indicate the attacker makes about 166,000 USDC profit in this exam
 
 **Submission details:** https://code4rena.com/reports/2025-11-megapot#m-06-changes-to-pyth-entropy-provider-used-by-scaledentropyprovider-allow-attacker-to-fix-jackpot-result
 
-### M-02: If bonus ball max equals normal ball max then ticket buyers gain excessive edge
+## M-02: If bonus ball max equals normal ball max then ticket buyers gain excessive edge
 
-## Finding description and impact
+### Finding description and impact
 
 The random number selection is generated using a common `seed` for both the normal balls and the bonus ball. It is possible that `normalBallMax` is equal to `bonusBallMax` because `bonusBallMax` is calculated using this formula below (abbreviated version of [Jackpot.sol:1494-1496](https://github.com/code-423n4/2025-11-megapot/blob/f0a7297d59c376e38b287b2c56740617dbbfbdc7/contracts/Jackpot.sol#L1494-L1496)):
 
@@ -573,7 +573,7 @@ Their probability of bonus ball match therefore goes up by a factor of `k * N / 
 
 Conclusion: the gambler gets significant statistical advantage. It is very possible that their expected value is positive from playing the game. Impact: financial loss to LPs.
 
-## Recommended mitigation steps
+### Recommended mitigation steps
 
 Consider providing separate random seeds in each draw done within `ScaledEntropyProvider`:
 
