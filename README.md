@@ -16,7 +16,7 @@ Highlights:
 
 | Platform   | Contest                 | Date        | Findings             | Summary                                        | Comments                                 |
 |------------|-------------------------|-------------|----------------------|------------------------------------------------|----------------------------------------- |
-| Code4rena  | Megapot V2              | Nov 2025    | 1 Solo Med, 1 Med    |                                                | Placed 3rd and invited by sponsor to complete private, post-contest audit |
+| Code4rena  | Megapot V2              | Nov 2025    | 1 Solo Med, 1 Med    | [View](./code4rena/2025-11-megapot.md)         | Placed 3rd and invited by sponsor to complete private, post-contest audit |
 | Code4rena  | Sequence                | Oct 2025    | 1 Solo High          | [View](./code4rena/2025-10-sequence.md)                  | Placed 2nd                               |
 | Code4rena  | GTE Perps and Launchpad | Sept 2025   | High: 7 confirmed. Med: 6 confirmed. Several more awaiting escalation. | Not available yet        | 8 submissions currently selected as primary (best) submission, pending final judging decision |
 | Sherlock   | Notional exponent       | July  2025  | 1 High, 1 Med        | [View](./sherlock/2025-05-notional-exponent.md)|                                          |
