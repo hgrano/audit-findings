@@ -8,7 +8,7 @@
 
 ---
 
-## 🛑 Medium Severity Findings
+## ⚠️ Medium Severity Findings
 
 ### M-01: Changes to Pyth entropy provider used by `ScaledEntropyProvider` allow attacker to fix jackpot result
 
