@@ -7,14 +7,16 @@ This repository contains all my currently confirmed smart contract audit finding
 Highlights:
 - Four top 3 finishes on Code4Rena: one 2nd place and three 3rd places.
 - 24 confirmed high findings in contests.
-- 13 confirmed medium findings in contests.
+- 14 confirmed medium findings in contests.
 - Most unique/interesting findings:
   - [Sequence H-01](./code4rena/2025-10-sequence.md#h-01-chained-signature-with-checkpoint-usage-disabled-can-bypass-all-checkpointer-validation) (Solo high)
+    - Sponsor feedback on [X](https://x.com/taylanpince/status/1993693265875685651?s=20): "The finding that struck us is H-01 by @0xhgrano. In short, a chained signature with the checkpointer flag disabled could bypass checkpointer validation. That is an elegant, high-impact catch, and it humbled us."
+  - [Megapot V2 M-06](https://code4rena.com/reports/2025-11-megapot#m-06-changes-to-pyth-entropy-provider-used-by-scaledentropyprovider-allow-attacker-to-fix-jackpot-result) (Solo medium)
   - [Alchemix V3: H-01](./cantina/2025-05-alchemix-v3.md#h-01-an-initial-dust-deposit-can-be-used-to-decrease-debt-on-other-accounts-leading-to-loss-of-funds) (only reported by two other auditors out of ~200 competitors).
 
 | Platform   | Contest                 | Date        | Findings             | Summary                                        | Comments                                 |
 |------------|-------------------------|-------------|----------------------|------------------------------------------------|----------------------------------------- |
-| Code4rena  | Megapot V2              | Dec 2025    | 1 Solo Med, 1 Med    |                                                | Placed 3rd and invited by sponsor to complete private, post-contest audit |
+| Code4rena  | Megapot V2              | Nov 2025    | 1 Solo Med, 1 Med    |                                                | Placed 3rd and invited by sponsor to complete private, post-contest audit |
 | Code4rena  | Sequence                | Oct 2025    | 1 Solo High          | [View](./code4rena/2025-10-sequence.md)                  | Placed 2nd                               |
 | Code4rena  | GTE Perps and Launchpad | Sept 2025   | High: 7 confirmed. Med: 6 confirmed. Several more awaiting escalation. | Not available yet        | 8 submissions currently selected as primary (best) submission, pending final judging decision |
 | Sherlock   | Notional exponent       | July  2025  | 1 High, 1 Med        | [View](./sherlock/2025-05-notional-exponent.md)|                                          |
@@ -34,4 +36,4 @@ Highlights:
 | Protocol   | Firm                 | Date        | Findings             | Description                                    | Comments                                 |
 |------------|-------------------------|-------------|----------------------|------------------------------------------------|----------------------------------------- |
 | Zama Token Auction | Burra Security    | Dec 2025    | (Private)            |                                                | Audit of Zama protocol's confidential token auction system |
-| Megapot V2 (post-contest audit)  | Private collaboration with 2 other auditors   | Oct 2025    | (Private)         | Final audit of Megapot V2 contracts (post C4 contest) |
+| Megapot V2 (post-contest audit)  | Private collaboration in a team of three auditors   | Oct 2025    | (Private)         | Final audit of Megapot V2 contracts (post C4 contest) |
