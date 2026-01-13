@@ -1,17 +1,20 @@
 # Audit Findings
 
-This repository contains all my currently confirmed smart contract audit findings.
+This repository contains all my currently confirmed smart contract audit findings in both contests and private audits.
+
+## Contest Results
 
 Highlights:
 - One 2nd place and two 3rd place finishes on Code4Rena.
-- 24 confirmed high findings.
-- 13 confirmed medium findings.
+- 24 confirmed high findings in contests.
+- 13 confirmed medium findings in contests.
 - Most unique/interesting findings:
   - [Sequence H-01](./code4rena/2025-10-sequence.md#h-01-chained-signature-with-checkpoint-usage-disabled-can-bypass-all-checkpointer-validation) (Solo high)
   - [Alchemix V3: H-01](./cantina/2025-05-alchemix-v3.md#h-01-an-initial-dust-deposit-can-be-used-to-decrease-debt-on-other-accounts-leading-to-loss-of-funds) (only reported by two other auditors out of ~200 competitors).
 
 | Platform   | Contest                 | Date        | Findings             | Summary                                        | Comments                                 |
 |------------|-------------------------|-------------|----------------------|------------------------------------------------|----------------------------------------- |
+| Code4rena  | Megapot V2              | Dec 2025    | 1 Solo Med, 1 Med    |                                                | Placed 3rd and invited by sponsor to complete private, post-contest audit |
 | Code4rena  | Sequence                | Oct 2025    | 1 Solo High          | [View](./code4rena/2025-10-sequence.md)                  | Placed 2nd                               |
 | Code4rena  | GTE Perps and Launchpad | Sept 2025   | High: 7 confirmed. Med: 6 confirmed. Several more awaiting escalation. | Not available yet        | 8 submissions currently selected as primary (best) submission, pending final judging decision |
 | Sherlock   | Notional exponent       | July  2025  | 1 High, 1 Med        | [View](./sherlock/2025-05-notional-exponent.md)|                                          |
@@ -25,3 +28,10 @@ Highlights:
 | Code4rena  | Phi                     | August 2024 | 2 High, 2 Med        | [View](./code4rena/2024-08-phi.md)             | My first try at auditing, placed 13th out of 99 auditors |
 
 \* Includes 1 Medium severity finding which was judged invalid, but respectfully, I believe it is worth raising as a Medium severity issue. Unfortunately for the contestants, the judges did not consider any H/M submissions as valid but I scored well based on my QA report.
+
+## Private audits
+
+| Protocol   | Firm                 | Date        | Findings             | Description                                    | Comments                                 |
+|------------|-------------------------|-------------|----------------------|------------------------------------------------|----------------------------------------- |
+| Zama Token Auction | Burra Security    | Dec 2025    | (Private)            |                                                | Audit of Zama protocol's confidential token auction system |
+| Megapot V2 (post-contest audit)  | Private collaboration with 2 other auditors   | Oct 2025    | (Private)         | Final audit of Megapot V2 contracts (post C4 contest) |
