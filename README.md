@@ -36,4 +36,4 @@ Highlights:
 | Protocol   | Firm                 | Date        | Findings             | Description                              |
 |------------|----------------------|-------------|----------------------|----------------------------------------- |
 | Zama Token Auction | Burra Security    | Dec 2025    | (Private)            |  Audit of Zama protocol's confidential token auction system |
-| Megapot V2 (post-contest audit)  | Private collaboration in a team of three auditors   | Oct 2025    | (Private)         | Final audit of Megapot V2 contracts (post C4 contest) |
+| Megapot V2 (post-contest audit)  | Private collaboration in a team of three auditors   | Oct 2025    | [View](./private/Megapot_V2.pdf)       | Final audit of Megapot V2 contracts (post C4 contest) |
