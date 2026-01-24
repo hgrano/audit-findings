@@ -5,7 +5,7 @@ This repository contains all my currently confirmed smart contract audit finding
 ## Contest Results
 
 Highlights:
-- Four top 3 finishes on Code4Rena: one 2nd place and three 3rd places.
+- Five top 3 finishes on Code4Rena: two 2nd places and three 3rd places.
 - 24 confirmed high findings in contests.
 - 14 confirmed medium findings in contests.
 - Most unique/interesting findings:
@@ -18,7 +18,7 @@ Highlights:
 |------------|-------------------------|-------------|----------------------|------------------------------------------------|----------------------------------------- |
 | Code4rena  | Megapot V2              | Nov 2025    | 1 Solo Med, 1 Med    | [View](./code4rena/2025-11-megapot.md)         | Placed 3rd and invited by sponsor to complete private, post-contest audit |
 | Code4rena  | Sequence                | Oct 2025    | 1 Solo High          | [View](./code4rena/2025-10-sequence.md)                  | Placed 2nd                               |
-| Code4rena  | GTE Perps and Launchpad | Sept 2025   | High: 7 confirmed. Med: 6 confirmed. Several more awaiting escalation. | Not available yet        | 8 submissions currently selected as primary (best) submission, pending final judging decision |
+| Code4rena  | GTE Perps and Launchpad | Sept 2025   | 7 High, 6 Med        | Not available yet        | 9 submissions selected as primary (best) submission - to be included in final report. Top "gatherer" (highest number of valid H/M findings). |
 | Sherlock   | Notional exponent       | July  2025  | 1 High, 1 Med        | [View](./sherlock/2025-05-notional-exponent.md)|                                          |
 | Sherlock   | Chainlink Rewards       | June  2025  | 1 Med                | (Private findings)                             |                                          |
 | Sherlock   | LEND                    | May   2025  | 7 High               | [View](./sherlock/2025-05-lend.md)             |                                          |
