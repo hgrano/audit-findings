@@ -13,6 +13,7 @@ Highlights:
   - [Sequence H-01](./code4rena/2025-10-sequence.md#h-01-chained-signature-with-checkpoint-usage-disabled-can-bypass-all-checkpointer-validation) (Solo high)
     - Sponsor feedback on [X](https://x.com/taylanpince/status/1993693265875685651?s=20): "The finding that struck us is H-01 by @0xhgrano. In short, a chained signature with the checkpointer flag disabled could bypass checkpointer validation. That is an elegant, high-impact catch, and it humbled us."
   - [Megapot V2 M-06](https://code4rena.com/reports/2025-11-megapot#m-06-changes-to-pyth-entropy-provider-used-by-scaledentropyprovider-allow-attacker-to-fix-jackpot-result) (Solo medium)
+  - [Megapot V2 M-05](https://code4rena.com/reports/2025-11-megapot#m-05-randomness-can-be-exploited-in-some-cases) (found only be one other auditor)
   - [Alchemix V3: H-01](./cantina/2025-05-alchemix-v3.md#h-01-an-initial-dust-deposit-can-be-used-to-decrease-debt-on-other-accounts-leading-to-loss-of-funds) (only reported by two other auditors out of ~200 competitors).
 
 | Platform   | Contest                 | Date        | Findings             | Summary                                        | Comments                                 |
