@@ -5,7 +5,7 @@ This repository contains all my currently confirmed smart contract audit finding
 ## Contest Results
 
 Highlights:
-- Ranked 2nd on Code4rena 90-day leaderboard as of Feb 2026.
+- Ranked 2nd on Code4rena 90-day leaderboard as of Feb 9th, 2026.
 - Five top 3 finishes on Code4Rena: two 2nd places and three 3rd places.
 - 24 confirmed high findings in contests.
 - 14 confirmed medium findings in contests.
