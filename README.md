@@ -5,7 +5,7 @@ This repository contains all my currently confirmed smart contract audit finding
 ## Contest Results
 
 Highlights:
-- Ranked 2nd on Code4rena 90-day leaderboard as of Feb 9th, 2026.
+- Ranked as high as 2nd on Code4rena 90-day leaderboard (during Feb 2026).
 - Five top 3 finishes on Code4Rena: two 2nd places and three 3rd places.
 - 24 confirmed high findings in contests.
 - 14 confirmed medium findings in contests.
@@ -20,7 +20,7 @@ Highlights:
 |------------|-------------------------|-------------|----------------------|------------------------------------------------|----------------------------------------- |
 | Code4rena  | Megapot V2              | Nov 2025    | 1 Solo Med, 1 Med    | [View](./code4rena/2025-11-megapot.md)         | Placed 3rd and invited by sponsor to complete private, post-contest audit |
 | Code4rena  | Sequence                | Oct 2025    | 1 Solo High          | [View](./code4rena/2025-10-sequence.md)                  | Placed 2nd                               |
-| Code4rena  | GTE Perps and Launchpad | Sept 2025   | 7 High, 6 Med        | Not available yet        | Placed 2nd. 8 submissions selected as primary (best) submission - to be included in final report. Top "gatherer" (highest number of valid H/M findings). |
+| Code4rena  | GTE Perps and Launchpad | Sept 2025   | 7 High, 6 Med        | [View](https://code4rena.com/reports/2025-08-gte-perps-and-launchpad)        | Placed 2nd. 8 submissions selected as primary (best) submission - to be included in final report. Top "gatherer" (highest number of valid H/M findings). |
 | Sherlock   | Notional exponent       | July  2025  | 1 High, 1 Med        | [View](./sherlock/2025-05-notional-exponent.md)|                                          |
 | Sherlock   | Chainlink Rewards       | June  2025  | 1 Med                | (Private findings)                             |                                          |
 | Sherlock   | LEND                    | May   2025  | 7 High               | [View](./sherlock/2025-05-lend.md)             |                                          |
