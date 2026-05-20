@@ -37,6 +37,10 @@ Highlights:
 
 | Protocol   | Firm                 | Date        | Findings             | Description                              |
 |------------|----------------------|-------------|----------------------|----------------------------------------- |
+| SBI Startale | Zellic | April 2026 | Private | Japanese Yen stablecoin |
+| Tenbin | Zellic | April 2026 | [View](https://github.com/Zellic/publications/blob/master/Core%20Contracts%20-%20Zellic%20Audit%20Report.pdf) | RWA tokenization core contracts |
+| Celestia | Zellic | April 2026 | Private | Celestia backed data availability for Arbitrum Nitro |
+| Hypertrend Vault | Zellic | March 2026 | Private | Customized ERC-4626 vault implementation |
 | Megapot V2  | Private collaboration in a team of three auditors | March 2026 | [View](./private/Megapot_V2_supplementary.pdf) | Audit of additional Megapot V2 components |
 | Zama Token Auction | Burra Security    | Dec 2025    | (Private)            |  Audit of Zama protocol's confidential token auction system |
 | Megapot V2 (post-contest audit)  | Private collaboration in a team of three auditors   | Oct 2025    | [View](./private/Megapot_V2.pdf)       | Final audit of Megapot V2 contracts (post C4 contest) |
