@@ -37,6 +37,8 @@ Highlights:
 
 | Protocol   | Firm                 | Date        | Findings             | Description                              |
 |------------|----------------------|-------------|----------------------|----------------------------------------- |
+| Kraken (Magna) Vesting | Zellic | June 2026 | Private | Vesting protocol |
+| Seismic Std Lib | Zellic | May 2026 | Private | Solidity Standard Library for Seismic (TEE-based L1) |
 | SBI Startale | Zellic | April 2026 | Private | Japanese Yen stablecoin |
 | Tenbin | Zellic | April 2026 | [View](https://github.com/Zellic/publications/blob/master/Core%20Contracts%20-%20Zellic%20Audit%20Report.pdf) | RWA tokenization core contracts |
 | Celestia | Zellic | April 2026 | Private | Celestia backed data availability for Arbitrum Nitro |
