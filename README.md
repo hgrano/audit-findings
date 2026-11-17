@@ -38,7 +38,7 @@ Highlights:
 | Protocol   | Firm                 | Date        | Audit type   | Findings             | Description                              |
 |------------|----------------------|-------------|--------------|----------------------|----------------------------------------- |
 | Stealth Startup | Zellic (shadowing other auditors) | September 2026 | Solana/Rust | Private | Learning Solana by shadowing other Zellic auditors |
-| Chainlink Solana CCIP | Zellic (shadowing other auditors) | Augst 2026 | Solana/Rust | Private | Chainlink's Solana CCIP program (shadowing other auditors to learn Solana) |
+| Chainlink Solana CCIP | Zellic (shadowing other auditors) | August 2026 | Solana/Rust | Private | Chainlink's Solana CCIP program (shadowing other auditors to learn Solana) |
 | OpacityLabs Token Factory | Zellic | July 2026 | EVM/Solidity | Private | Tokenization protocol for Security Tokens |
 | Noise Clearing House | Zellic | June 2026 | EVM/Solidity | Private | On-chain clearing house for Solidity perps protocol |
 | Kraken (Magna) Vesting | Zellic | June 2026 | EVM/Solidity | Private | Vesting protocol |
