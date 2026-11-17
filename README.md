@@ -37,6 +37,8 @@ Highlights:
 
 | Protocol   | Firm                 | Date        | Findings             | Description                              |
 |------------|----------------------|-------------|----------------------|----------------------------------------- |
+| OpacityLabs Token Factory | Zellic | July 2026 | Private | Tokenization protocol for Security Tokens |
+| Noise Clearing House | Zellic | June 2026 | Private | On-chain clearing house for Solidity perps protocol |
 | Kraken (Magna) Vesting | Zellic | June 2026 | Private | Vesting protocol |
 | Seismic Std Lib | Zellic | May 2026 | Private | Solidity Standard Library for Seismic (TEE-based L1) |
 | SBI Startale | Zellic | April 2026 | Private | Japanese Yen stablecoin |
